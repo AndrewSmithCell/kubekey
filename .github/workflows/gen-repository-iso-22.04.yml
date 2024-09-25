@@ -1,4 +1,4 @@
-name: gen-repository-iso
+name: gen-repository-iso-22.04
 on:
   workflow_dispatch:
     inputs:
