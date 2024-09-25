@@ -13,14 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: debian10-debs
-            dockerfile: dockerfile.debian10
-          - name: debian11-debs
-            dockerfile: dockerfile.debian11
           - name: ubuntu-20.04-debs
             dockerfile: dockerfile.ubuntu2004
-          - name: ubuntu-22.04-debs
-            dockerfile: dockerfile.ubuntu2204
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,23 +39,9 @@ jobs:
           mv ./output/linux_amd64/*.iso ${{ matrix.name }}-amd64.iso
           mv ./output/linux_arm64/*.iso ${{ matrix.name }}-arm64.iso
           sha256sum *.iso >  ${{ matrix.name }}.iso.sha256sum.txt
-
-      - name: Wait for release workflow to finish
-        uses: lewagon/wait-on-check-action@v1.3.4
-        with:
-          ref: ${{ github.ref }}
-          check-name: 'create draft release'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
-          allowed-conclusions: success
-
-      - name: Release and upload packages
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: create release and upload assets
         uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          draft: true
           files: |
             ${{ matrix.name }}.iso.sha256sum.txt
             ${{ matrix.name }}-amd64.iso
