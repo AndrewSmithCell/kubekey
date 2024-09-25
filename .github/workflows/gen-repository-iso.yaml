@@ -32,16 +32,9 @@ jobs:
           file: hack/gen-repository-iso/${{ matrix.dockerfile }}
           platforms: linux/amd64
           outputs: type=local,dest=./output
-
-      - name: Prepare for upload iso
-        shell: bash
-        run: |
-          mv *.iso ${{ matrix.name }}-amd64.iso
-          sha256sum *.iso >  ${{ matrix.name }}.iso.sha256sum.txt
       - name: create release and upload assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ${{ matrix.name }}.iso.sha256sum.txt
-            ${{ matrix.name }}-amd64.iso
+            ./output/*.iso
           tag_name: ${{ github.event.inputs.tags }}
