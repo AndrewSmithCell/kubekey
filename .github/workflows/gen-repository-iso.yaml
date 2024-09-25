@@ -36,7 +36,7 @@ jobs:
       - name: Prepare for upload iso
         shell: bash
         run: |
-          mv ./output/linux_amd64/*.iso ${{ matrix.name }}-amd64.iso
+          mv *.iso ${{ matrix.name }}-amd64.iso
           sha256sum *.iso >  ${{ matrix.name }}.iso.sha256sum.txt
       - name: create release and upload assets
         uses: softprops/action-gh-release@v2
