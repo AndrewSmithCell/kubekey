@@ -18,6 +18,23 @@ common:
   - ebtables
   - haproxy
   - keepalived
+  - python3
+  - python3-venv
+  - python3-dev
+  - golang-1.22-go
+  - temurin-21-jdk
+  - nodejs
+  - strace
+  - build-essential
+  - libmpfr-dev
+  - libgmp3-dev
+  - libmpc-dev
+  - libtool
+  - make
+  - cmake
+  - libseccomp-dev
+  - gnupg
+  - curl
 rpms:
   - nfs-utils
   - yum-utils
@@ -55,7 +72,12 @@ ubuntu: []
 
 ubuntu1804: []
 
-ubuntu2004: []
+ubuntu2004:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204: []
