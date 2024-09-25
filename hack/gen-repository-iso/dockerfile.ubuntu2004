@@ -13,7 +13,7 @@ RUN apt update -qq \
     && add-apt-repository ppa:gluster/glusterfs-7 -y \
     && apt update -qq
 
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 WORKDIR /package
 COPY packages.yaml .
