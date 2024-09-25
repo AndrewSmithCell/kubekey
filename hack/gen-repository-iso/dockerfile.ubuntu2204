@@ -7,12 +7,23 @@ ARG PKGS=.common[],.debs[],.ubuntu[],.ubuntu2204[]
 ARG BUILD_TOOLS="apt-transport-https software-properties-common ca-certificates curl wget gnupg dpkg-dev genisoimage"
 ENV DEBIAN_FRONTEND=noninteractive
 
+ARG BUILD_TOOLS="apt-transport-https software-properties-common ca-certificates curl wget gnupg dpkg-dev genisoimage lsb-release tar"
+ENV DEBIAN_FRONTEND=noninteractive
+
 # dump system package list
 RUN dpkg --get-selections | grep -v deinstall | cut -f1 | cut -d ':' -f1 > packages.list
 RUN apt update -qq \
     && apt install -y --no-install-recommends $BUILD_TOOLS \
-    #&& add-apt-repository ppa:gluster/glusterfs-7 -y \
+    && add-apt-repository ppa:gluster/glusterfs-7 -y \
     && apt update -qq
+
+RUN mkdir -p /etc/apt/keyrings
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+RUN wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | apt-key add -
+RUN echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update
 
 WORKDIR /package
 COPY packages.yaml .
@@ -26,7 +37,7 @@ RUN mkdir -p ${DIR} \
     && cd ${DIR} \
     && dpkg-scanpackages ./ /dev/null | gzip -9c > ./Packages.gz
 
-RUN genisoimage -r -o ${DIR}.iso ${DIR}
+RUN tar -cvzf ${DIR}.iso ${DIR}
 
 FROM scratch
-COPY --from=ubuntu2204 /package/*.iso /
+COPY --from=ubuntu2004 /package/*.iso /
