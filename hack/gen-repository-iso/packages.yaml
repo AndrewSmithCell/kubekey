@@ -22,7 +22,6 @@ common:
   - python3-venv
   - python3-dev
   - golang-1.22-go
-  - temurin-21-jdk
   - nodejs
   - strace
   - build-essential
