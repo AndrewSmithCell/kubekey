@@ -1,10 +1,9 @@
----
 name: gen-repository-iso
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'tags to create build'
 
 jobs:
   build:
@@ -71,3 +70,4 @@ jobs:
             ${{ matrix.name }}.iso.sha256sum.txt
             ${{ matrix.name }}-amd64.iso
             ${{ matrix.name }}-arm64.iso
+          tag_name: ${{ github.event.inputs.tags }}
