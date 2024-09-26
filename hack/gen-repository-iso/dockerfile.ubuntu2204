@@ -40,4 +40,4 @@ RUN mkdir -p ${DIR} \
 RUN tar -cvzf ${DIR}.iso ${DIR}
 
 FROM scratch
-COPY --from=ubuntu2004 /package/*.iso /
+COPY --from=ubuntu2204 /package/*.iso /
