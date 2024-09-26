@@ -17,33 +17,13 @@ ubuntu: []
 ubuntu1804: []
 
 ubuntu2004:
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-  - docker-compose-plugin
-  - temurin-21-jdk
-  - python3.10
-  - python3.10-dev
-  - python3.10-venv
-  - python3.12
-  - python3.12-venv
-  - libpython3.12-stdlib
-  - libpython3.12-dev
+  - git-all
+  - node-js
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-  - docker-compose-plugin
-  - temurin-21-jdk
-  - python3.10
-  - python3.10-dev
-  - python3.10-venv
-  - python3.12
-  - python3.12-venv
-  - libpython3.12-stdlib
-  - libpython3.12-dev
+  - git-all
+  - node-js
 
 almalinux: []
 
