@@ -18,12 +18,12 @@ ubuntu1804: []
 
 ubuntu2004:
   - git-all
-  - node-js
+  - nodejs
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
   - git-all
-  - node-js
+  - nodejs
 
 almalinux: []
 
