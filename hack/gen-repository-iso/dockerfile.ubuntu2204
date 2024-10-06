@@ -1,4 +1,4 @@
-FROM ubuntu:22.04.5 as ubuntu2204
+FROM ubuntu:jammy as ubuntu2204
 ARG TARGETARCH
 ARG DISTRO=ubuntu2204
 ARG OS_RELEASE=jammy
