@@ -5,6 +5,9 @@ ARG OS_RELEASE=jammy
 ARG DIR=ubuntu-22.04-${TARGETARCH}-debs
 ARG PKGS=.common[],.debs[],.ubuntu[],.ubuntu2204[]
 
+# check version
+RUN lsb_release -a
+
 ARG BUILD_TOOLS="apt-transport-https software-properties-common ca-certificates curl wget gnupg dpkg-dev genisoimage lsb-release tar"
 ENV DEBIAN_FRONTEND=noninteractive
 
