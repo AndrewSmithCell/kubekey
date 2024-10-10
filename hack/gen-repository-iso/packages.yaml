@@ -32,13 +32,8 @@ ubuntu2004: []
 ubuntu2204:
   - python3.12
   - python3.12-full
-  - python3.12-pip
   - python3.12-dev
-  - python3.12-setuptools
   - python3.12-venv
-  - python3.12-wheel
-  - ca-certificates-java
-  - openjdk-22-jdk-headless
   - fp-compiler
   - libxtst6 
   - tini 
