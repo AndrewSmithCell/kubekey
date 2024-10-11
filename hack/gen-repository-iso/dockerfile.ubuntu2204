@@ -30,10 +30,10 @@ RUN apt-get update
 
 WORKDIR /package
 COPY packages.yaml .
-
+COPY packages.list1 .
 COPY --from=mikefarah/yq:4.11.1 /usr/bin/yq /usr/bin/yq
-RUN yq eval "${PKGS}" packages.yaml >> packages.list \
-    && sort -u packages.list | xargs apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances | grep "^\w" | sort -u > packages.list1
+# RUN yq eval "${PKGS}" packages.yaml >> packages.list \
+#    && sort -u packages.list | xargs apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances | grep "^\w" | sort -u > packages.list1
 RUN mkdir -p ${DIR} \
     && cd ${DIR} \
     && sort -u ../packages.list1 | xargs apt-get download \
