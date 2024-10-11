@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 as ubuntu2204
+FROM ubuntu:jammy as ubuntu2204
 ARG TARGETARCH
 ARG DISTRO=ubuntu2204
 ARG OS_RELEASE=jammy
@@ -42,9 +42,10 @@ RUN mkdir -p ${DIR} \
     && dpkg-scanpackages ./ /dev/null | gzip -9c > ./Packages.gz
 
 RUN cp packages.list ${DIR}/
+RUN cp packages.urls ${DIR}/
 RUN cp packages.list1 ${DIR}/
 
-RUN tar -cvzf ${DIR}.iso ${DIR}
+RUN tar -cvzf ${DIR}.z ${DIR}
 
 FROM scratch
-COPY --from=ubuntu2204 /package/*.iso /
+COPY --from=ubuntu2204 /package/*.z /
