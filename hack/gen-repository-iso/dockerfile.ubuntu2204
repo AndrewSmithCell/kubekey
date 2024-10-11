@@ -41,4 +41,4 @@ RUN mkdir -p ${DIR} \
 RUN tar -cvzf ${DIR}.z ${DIR}
 
 FROM scratch
-COPY --from=ubuntu2204 /package/*.z.* /
+COPY --from=ubuntu2204 /package/*.z /
