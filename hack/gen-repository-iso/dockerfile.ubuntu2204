@@ -34,8 +34,11 @@ COPY packages.yaml .
 COPY --from=mikefarah/yq:4.11.1 /usr/bin/yq /usr/bin/yq
 RUN yq eval "${PKGS}" packages.yaml >> packages.list \
     && sort -u packages.list | xargs apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances | grep "^\w" | sort -u > packages.list1
-RUN sort -u packages.list1 | xargs apt-get download
-RUN tar -cvzf ${DIR}.z .
+RUN mkdir -p ${DIR} \
+    && cd ${DIR} \
+    && sort -u ../packages.list1 | xargs apt-get download \
+    && dpkg-scanpackages ./ /dev/null | gzip -9c > ./Packages.gz
+RUN tar -cvzf ${DIR}.z ${DIR}
 
 FROM scratch
-COPY --from=ubuntu2204 /package/*.z /
+COPY --from=ubuntu2204 /package/*.z.* /
