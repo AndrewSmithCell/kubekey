@@ -36,5 +36,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ./output/*.iso
+            ./output/*.z
           tag_name: ${{ github.event.inputs.tags }}
