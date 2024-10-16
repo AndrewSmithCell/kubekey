@@ -31,16 +31,9 @@ ubuntu2004:
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
-  - texlive-binaries
-  - texlive-latex-base
-  - texlive-latex-extra
-  - texlive-latex-recommended
-  - texlive-pictures
-  - texlive-pstricks
-  - librsvg2-bin
-  - xxd
-  - imagemagick
-  - dvisvgm 
+  - openjdk-22-jdk-headless
+  - clang
+  - php-cli
 almalinux: []
 
 almalinux90: []
