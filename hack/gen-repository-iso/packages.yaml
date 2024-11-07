@@ -33,6 +33,8 @@ ubuntu2004:
 ubuntu2204:
   - g++-13
   - gcc-13
+  - g++-12
+  - gcc-12
 almalinux: []
 
 almalinux90: []
