@@ -43,7 +43,7 @@ RUN mkdir -p ${DIR} \
     && cd ${DIR} \
     && sort -u ../packages.diff | xargs apt-get download \
     && dpkg-scanpackages ./ /dev/null | gzip -9c > ./Packages.gz
-RUN sort -u packages.list.all | apt-cache madison > packages.list.madison
+RUN sort -u packages.list.all | xargs apt-cache madison > packages.list.madison
 RUN sed -i 's/^\s*\(\S*\)\s|\s\(\S*\)\s.*/\1=\2/g' packages.list.madison
 RUN cp packages.diff ${DIR}/
 RUN cp packages.list.* ${DIR}/
