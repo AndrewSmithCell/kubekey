@@ -34,16 +34,18 @@ WORKDIR /package
 COPY packages.yaml .
 COPY packages.list1 .
 COPY --from=mikefarah/yq:4.11.1 /usr/bin/yq /usr/bin/yq
-RUN yq eval "${PKGS}" packages.yaml >> packages.list \
-   && sort -u packages.list | xargs apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances | grep "^\w" | sort -u > packages.list2
-RUN comm -13 packages.list1 packages.list2 > packages.diff
-RUN comm packages.list1 packages.list2 | sed 's/\s//g' > packages.list
+RUN yq eval "${PKGS}" packages.yaml >> packages.list.required \
+   && sort -u packages.list.required | xargs apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances | grep "^\w" | sort -u > packages.list.requiredwithdepend
+RUN comm -13 packages.list1 packages.list.requiredwithdepend > packages.diff
+RUN comm packages.list1 packages.list.requiredwithdepend | sed 's/\s//g' > packages.list.all
 RUN mkdir -p ${DIR} \
     && cd ${DIR} \
     && sort -u ../packages.diff | xargs apt-get download \
     && dpkg-scanpackages ./ /dev/null | gzip -9c > ./Packages.gz
 RUN cp packages.diff ${DIR}/
-RUN cp packages.list ${DIR}/
+RUN cp packages.list.required ${DIR}/
+RUN cp packages.list.requiredwithdepend ${DIR}/
+RUN cp packages.list.all ${DIR}/
 RUN tar -cvzf ${DIR}.z ${DIR}
 
 FROM scratch
