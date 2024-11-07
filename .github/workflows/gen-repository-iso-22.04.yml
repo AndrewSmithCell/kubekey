@@ -37,4 +37,5 @@ jobs:
         with:
           files: |
             ./output/*.z
+            ./output/packages.*
           tag_name: ${{ github.event.inputs.tags }}
