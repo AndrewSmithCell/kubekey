@@ -114,6 +114,7 @@ libblkid1
 libbrotli1
 libbsd0
 libbz2-1.0
+libc-bin
 libc-dev-bin
 libc6
 libc6-dev
@@ -237,6 +238,7 @@ libjpeg8
 libjpeg8-dev
 libjs-mathjax
 libjson-c5
+libjson-perl
 libk5crypto3
 libkeyutils1
 libkmod2
@@ -305,6 +307,7 @@ libpdfbox-java
 libperl5.34
 libpixman-1-0
 libpng16-16
+libpq5
 libprocps8
 libpsl5
 libptexenc1
@@ -428,6 +431,7 @@ libxpm4
 libxrandr2
 libxrender1
 libxshmfence1
+libxslt1.1
 libxss1
 libxt6
 libxtst6
@@ -439,6 +443,8 @@ libzzip-0-13
 linux-libc-dev
 llvm-13-linker-tools
 llvm-14-linker-tools
+locales
+locales-all
 lsb-base
 lsb-release
 lua-bitop
@@ -452,9 +458,15 @@ media-types
 mew-beta-bin
 mew-bin
 mime-support
+mongodb-org
+mongodb-org-mongos
+mongodb-org-server
+mongodb-org-shell
+mongodb-org-tools
 mount
 mysql-common
 net-tools
+netbase
 nodejs
 openjdk-21-jre-headless
 openssl
@@ -479,6 +491,11 @@ pinentry-qt
 pinentry-tty
 pkg-config
 poppler-data
+postgresql
+postgresql-14
+postgresql-client-14
+postgresql-client-common
+postgresql-common
 preview-latex-style
 procps
 psmisc
@@ -526,6 +543,7 @@ scala-parser-combinators
 scala-xml
 sensible-utils
 shared-mime-info
+ssl-cert
 systemd
 systemd-sysv
 t1utils
@@ -568,4 +586,6 @@ xvfb
 xxd
 zlib1g
 zlib1g-dev
+zsh
+zsh-common
 zstd
