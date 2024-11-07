@@ -50,4 +50,4 @@ RUN tar -cvzf ${DIR}.z ${DIR}
 
 FROM scratch
 COPY --from=ubuntu2204 /package/*.z /
-COPY --from=ubuntu2204 /package/packages.list /
+COPY --from=ubuntu2204 /package/packages.list.all /
