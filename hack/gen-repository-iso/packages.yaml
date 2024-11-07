@@ -31,9 +31,8 @@ ubuntu2004:
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
-  - mongodb-org
-  - postgresql
-  - zsh
+  - g++-13
+  - gcc-13
 almalinux: []
 
 almalinux90: []
