@@ -31,24 +31,8 @@ ubuntu2004:
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
-  - exiftool
-  - chromium-driver
-  - coffeescript
-  - pkg-config
-  - redis-server
-  - curl
-  - mariadb-client
-  - libmariadb-dev
-  - libjpeg-dev
-  - debconf-utils
-  - gnupg
-  - unzip
-  - xvfb
-  - libgconf-2-4
-  - google-chrome-stable
-  - fonts-noto
-  - ttf-mscorefonts-installer
-
+  - g++-13
+  - gcc-13
 almalinux: []
 
 almalinux90: []
