@@ -11,6 +11,9 @@ ca-certificates-java
 cabextract
 cdebconf
 clang
+clang-13
+clang-13-doc
+clang-13-examples
 clang-14
 coffeescript
 coreutils
@@ -40,6 +43,7 @@ fonts-freefont-ttf
 fonts-liberation
 fonts-liberation2
 fonts-lmodern
+fonts-mathjax
 fonts-noto
 fonts-noto-core
 fonts-texgyre
@@ -118,8 +122,12 @@ libcairo-gobject2
 libcairo2
 libcap-ng0
 libcap2
+libclang-13-dev
+libclang-common-13-dev
 libclang-common-14-dev
+libclang-cpp13
 libclang-cpp14
+libclang1-13
 libclang1-14
 libcolord2
 libcom-err2
@@ -238,6 +246,7 @@ libkrb5support0
 libksba8
 liblcms2-2
 libldap-2.5-0
+libllvm13
 libllvm14
 libllvm15
 liblqr-1-0
@@ -428,6 +437,7 @@ libyaml-0-2
 libzstd1
 libzzip-0-13
 linux-libc-dev
+llvm-13-linker-tools
 llvm-14-linker-tools
 lsb-base
 lsb-release
@@ -476,6 +486,7 @@ python-apt-common
 python3
 python3-apt
 python3-chardet
+python3-clang-13
 python3-dbus
 python3-debconf
 python3-debian
