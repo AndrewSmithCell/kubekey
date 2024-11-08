@@ -31,10 +31,7 @@ ubuntu2004:
 
 # The minimum version of docker-ce on ubuntu 2204 is 20.10.13
 ubuntu2204:
-  - g++-13
-  - gcc-13
-  - g++-12
-  - gcc-12
+  - asciidoc
 almalinux: []
 
 almalinux90: []
